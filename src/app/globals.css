@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 240 10% 99%; /* Very light cool gray */
+    --foreground: 240 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
+
+    --chart-1: 260 85% 65%; /* Primary Purple */
+    --chart-2: 190 80% 55%;   /* Bright Cyan */
+    --chart-3: 30 90% 55%;    /* Orange */
+    --chart-4: 330 80% 60%;   /* Pink */
+    --chart-5: 210 90% 50%;   /* Bright Blue */
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 240 10% 99%;
+    --sidebar-foreground: 240 10% 25%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: 240 10% 88%;
+    --sidebar-ring: var(--ring);
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 263.4 95.2% 66.1%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 263.4 95.2% 66.1%;
+
+    --chart-1: 260 85% 70%;
+    --chart-2: 190 80% 60%;
+    --chart-3: 30 90% 60%;
+    --chart-4: 330 80% 65%;
+    --chart-5: 210 90% 55%;
+
+    --sidebar-background: 240 10% 4%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: 240 5% 15%;
+    --sidebar-ring: var(--ring);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    min-height: 100vh;
+  }
+  .content-wrapper {
+    transition: filter 0.5s ease-in-out;
+  }
+}
+
+/* For Welcome Page Gradient Background */
+.gradient-bg {
+  background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fce38a, #f38181);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 35%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 35%);
+    z-index: 1;
+}
+
+/* SVG Filters for Color-Blindness Simulation */
+.filters-container {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.simulate-protanopia .content-wrapper {
+  filter: url(#protanopia-filter);
+}
+
+.simulate-deuteranopia .content-wrapper {
+  filter: url(#deuteranopia-filter);
+}
+
+.simulate-tritanopia .content-wrapper {
+  filter: url(#tritanopia-filter);
+}
+
+
+/* Illustration animation */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
